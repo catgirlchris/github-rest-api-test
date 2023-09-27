@@ -27,7 +27,7 @@ if response.status_code == 200:
         if response.status_code == 200:
             commits_info = response.json()
             for commit in commits_info:
-                print("----> " + commit['name'])
+                print("----> " + commit['sha'])
 
 else:
     print(f"Failed to retrieve repository info. Status code: {response.status_code}")
