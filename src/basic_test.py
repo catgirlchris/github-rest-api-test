@@ -51,8 +51,10 @@ def main():
         if response.status_code == 200:
             commits_info = response.json()
             for commit in commits_info:
-                print("----> " + commit['sha'])
-        print()
+                print(f"### commit '{commit['commit']['message']}' ###")
+                for key, value in commit['commit'].items():
+                    print(f"--> {key}: {value}")
+                print()
 
 
 if __name__ == "__main__":
