@@ -47,14 +47,14 @@ def main():
 
         branch_name = branch['name']
         api_url = f"https://api.github.com/repos/{username}/{repo_name}/commits?sha={branch_name}"
-        response = requests.get(api_url)
-        if response.status_code == 200:
-            commits_info = response.json()
-            for commit in commits_info:
-                print(f"### commit '{commit['commit']['message']}' ###")
-                for key, value in commit['commit'].items():
-                    print(f"--> {key}: {value}")
-                print()
+
+        # Print commits
+        commits_info = send_request(api_url)
+        for commit in commits_info:
+            print(f"### commit '{commit['commit']['message']}' ###")
+            for key, value in commit['commit'].items():
+                print(f"--> {key}: {value}")
+            print()
 
 
 if __name__ == "__main__":
